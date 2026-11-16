@@ -1,0 +1,28 @@
+[
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1001",
+    "tenant": "shop-a",
+    "channel": "web",
+    "status": "paid",
+    "placed_at": "2026-10-01T09:15:00Z",
+    "currency": "CNY",
+    "order_amount": 10000,
+    "items": [
+      {"item_id": "I1", "sku": "SKU-A1", "title": "机械键盘", "qty": 2, "unit_price_cents": 2000},
+      {"item_id": "I2", "sku": "SKU-A2", "title": "鼠标垫", "qty": 1, "unit_price_cents": 3000},
+      {"item_id": "I3", "sku": "SKU-A3", "title": "USB-C 线", "qty": 3, "unit_price_cents": 1000}
+    ],
+    "discounts": [
+      {"discount_id": "D1", "code": "WELCOME", "kind": "coupon", "amount_cents": 1000},
+      {"discount_id": "D2", "code": "WELCOME", "kind": "coupon", "amount_cents": 500},
+      {"discount_id": "D3", "code": "VIP", "kind": "promotion", "amount_cents": 500},
+      {"discount_id": "D4", "code": "FREESHIP", "kind": "promotion", "amount_cents": 300}
+    ],
+    "fulfillments": [
+      {"fulfillment_id": "F1", "carrier": "SF", "tracking_no": "SF001", "shipping_fee_cents": 800, "lines": [{"item_id": "I1", "qty": 2}]},
+      {"fulfillment_id": "F2", "carrier": "YTO", "tracking_no": "YT002", "shipping_fee_cents": 400, "lines": [{"item_id": "I2", "qty": 1}, {"item_id": "I3", "qty": 3}]},
+      {"fulfillment_id": "F7", "carrier": "SF", "tracking_no": "SF003", "shipping_fee_cents": 300, "lines": [{"item_id": "I3", "qty": 1}]}
+    ]
+  }
+]

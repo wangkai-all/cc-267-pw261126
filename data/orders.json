@@ -1,0 +1,166 @@
+[
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1001",
+    "tenant": "shop-a",
+    "channel": "web",
+    "status": "paid",
+    "placed_at": "2026-10-01T09:15:00Z",
+    "currency": "CNY",
+    "order_amount": 10000,
+    "items": [
+      {"item_id": "I1", "sku": "SKU-A1", "title": "机械键盘", "qty": 2, "unit_price_cents": 2000},
+      {"item_id": "I2", "sku": "SKU-A2", "title": "鼠标垫", "qty": 1, "unit_price_cents": 3000},
+      {"item_id": "I3", "sku": "SKU-A3", "title": "USB-C 线", "qty": 3, "unit_price_cents": 1000}
+    ],
+    "discounts": [
+      {"discount_id": "D1", "code": "WELCOME", "kind": "coupon", "amount_cents": 1000},
+      {"discount_id": "D2", "code": "WELCOME", "kind": "coupon", "amount_cents": 500},
+      {"discount_id": "D3", "code": "VIP", "kind": "promotion", "amount_cents": 500}
+    ],
+    "fulfillments": [
+      {"fulfillment_id": "F1", "carrier": "SF", "tracking_no": "SF001", "shipping_fee_cents": 800, "lines": [{"item_id": "I1", "qty": 2}]},
+      {"fulfillment_id": "F2", "carrier": "YTO", "tracking_no": "YT002", "shipping_fee_cents": 400, "lines": [{"item_id": "I2", "qty": 1}, {"item_id": "I3", "qty": 3}]}
+    ]
+  },
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1002",
+    "tenant": "shop-a",
+    "channel": "app",
+    "status": "paid",
+    "placed_at": "2026-10-02T12:00:00Z",
+    "currency": "CNY",
+    "order_amount": 5000,
+    "items": [
+      {"item_id": "I4", "sku": "SKU-B1", "title": "显示器支架", "qty": 2, "unit_price_cents": 2500}
+    ],
+    "discounts": [],
+    "fulfillments": []
+  },
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1003",
+    "tenant": "shop-b",
+    "channel": "web",
+    "status": "paid",
+    "placed_at": "2026-10-03T08:30:00Z",
+    "currency": "CNY",
+    "order_amount": 1200,
+    "items": [
+      {"item_id": "I5", "sku": "SKU-E1", "title": "桌面收纳盒", "qty": 1, "unit_price_cents": 1200}
+    ],
+    "discounts": [
+      {"discount_id": "D7", "code": "FLASH", "kind": "coupon", "amount_cents": 200}
+    ],
+    "fulfillments": [
+      {"fulfillment_id": "F3", "carrier": "YTO", "tracking_no": "YT-1003", "shipping_fee_cents": 300, "lines": [{"item_id": "I5", "qty": 1}]}
+    ]
+  },
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1004",
+    "tenant": "shop-b",
+    "channel": "app",
+    "status": "refund_pending",
+    "placed_at": "2026-10-04T18:45:00Z",
+    "currency": "CNY",
+    "order_amount": 0,
+    "items": [],
+    "discounts": [
+      {"discount_id": "D8", "code": "EMPTY25", "kind": "coupon", "amount_cents": 300}
+    ],
+    "fulfillments": [
+      {"fulfillment_id": "F4", "carrier": "SF", "tracking_no": "SF-EMPTY", "shipping_fee_cents": 250, "lines": []}
+    ]
+  },
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1005",
+    "tenant": "shop-a",
+    "channel": "web",
+    "status": "paid",
+    "placed_at": "2026-10-05T10:05:00Z",
+    "currency": "CNY",
+    "order_amount": 10000,
+    "items": [
+      {"item_id": "I6", "sku": "SKU-C1", "title": "升降桌", "qty": 1, "unit_price_cents": 5000},
+      {"item_id": "I7", "sku": "SKU-C2", "title": "人体工学椅", "qty": 2, "unit_price_cents": 2500}
+    ],
+    "discounts": [
+      {"discount_id": "D5", "code": "SAVE10", "kind": "promotion", "amount_cents": 1000},
+      {"discount_id": "D6", "code": "SAVE10", "kind": "promotion", "amount_cents": 1000}
+    ],
+    "fulfillments": []
+  },
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1007",
+    "tenant": "shop-c",
+    "channel": "app",
+    "status": "paid",
+    "placed_at": "2026-10-07T14:20:00Z",
+    "currency": "CNY",
+    "order_amount": 6000,
+    "items": [
+      {"item_id": "I8", "sku": "SKU-D1", "title": "台灯", "qty": 4, "unit_price_cents": 1500}
+    ],
+    "discounts": [],
+    "fulfillments": [
+      {"fulfillment_id": "F5", "carrier": "JD", "tracking_no": "JD-1", "shipping_fee_cents": 500, "lines": [{"item_id": "I8", "qty": 2}]},
+      {"fulfillment_id": "F6", "carrier": "JD", "tracking_no": "JD-2", "shipping_fee_cents": 300, "lines": [{"item_id": "I8", "qty": 2}]}
+    ]
+  },
+  {
+    "schema_version": "orders.v3",
+    "order_id": "ORD-1008",
+    "tenant": "shop-c",
+    "channel": "web",
+    "status": "cancelled",
+    "placed_at": "2026-10-08T09:00:00Z",
+    "currency": "CNY",
+    "order_amount": 1500,
+    "items": [],
+    "discounts": [],
+    "fulfillments": []
+  },
+  {
+    "schema_version": "orders.v1",
+    "order_id": "ORD-2001",
+    "shop": "shop-legacy",
+    "channel": "web",
+    "state": "paid",
+    "created_at": "2026-09-20T03:00:00Z",
+    "currency": "CNY",
+    "total": "1600",
+    "items": [
+      {"item_id": "L1", "sku": "SKU-L1", "title": "Legacy Lamp", "qty": 2, "unit_price": "800"}
+    ],
+    "discounts": [
+      {"discount_id": "LD1", "code": "OLD10", "kind": "coupon", "amount": "200"}
+    ],
+    "fulfillments": [
+      {"fulfillment_id": "LF1", "carrier": "EMS", "tracking_no": "EMS-1", "shipping_fee": "300", "lines": [{"qty": 2}]}
+    ]
+  },
+  {
+    "schema_version": "orders.v2",
+    "order_id": "ORD-2002",
+    "tenant": "shop-legacy",
+    "channel": "app",
+    "status": "paid",
+    "placed_at": "2026-09-21T06:30:00Z",
+    "currency": "CNY",
+    "order_amount": 9000,
+    "items": [
+      {"item_id": "V1", "sku": "SKU-V1", "title": "Legacy Monitor", "qty": 2, "unit_price": "3000"},
+      {"item_id": "V2", "sku": "SKU-V2", "title": "Legacy Arm", "qty": 2, "unit_price": "1500"}
+    ],
+    "discounts": [
+      {"discount_id": "VD1", "code": "PCT5", "kind": "promotion", "percent": "5", "base_cents": 9000}
+    ],
+    "fulfillments": [
+      {"fulfillment_id": "VF1", "carrier": "ZTO", "tracking_no": "ZTO-9", "shipping": {"fee": "600"}, "lines": [{"qty": 2}, {"qty": 2}]}
+    ]
+  }
+]

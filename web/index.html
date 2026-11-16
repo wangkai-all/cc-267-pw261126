@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>订单粒度分析台 · 优惠 / 商品 / 履约</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header>
+  <h1>订单粒度分析台</h1>
+  <span class="sub">先聚合再关联 · 单数组展开 · 结果可追溯</span>
+  <span class="digest" id="digest">dataset —</span>
+</header>
+
+<main>
+  <section>
+    <div class="panel">
+      <h2>1 · 输出粒度 <span class="tag" id="grainTag">order</span></h2>
+      <div class="grains" id="grains"></div>
+      <div class="small muted" id="grainHint" style="margin-top:8px"></div>
+    </div>
+
+    <div class="panel">
+      <h2>2 · 指标 <span class="tag" id="metricTag">0</span></h2>
+      <div class="metrics" id="metrics"></div>
+    </div>
+
+    <div class="panel">
+      <h2>3 · 分组维度</h2>
+      <div class="chips" id="groupBy"></div>
+      <label style="margin-top:12px">过滤（逗号分隔多个值；维度必须在输出行上）</label>
+      <input type="text" id="filterText" placeholder="例如 status=paid  或  channel=web,app">
+      <div class="small muted" style="margin-top:6px">过滤只筛输出行；优惠/运费分摊仍基于整单，过滤后小计与订单总额不同是预期行为。</div>
+    </div>
+
+    <div class="panel">
+      <h2>4 · 执行</h2>
+      <div class="actions">
+        <button class="primary" id="runBtn">执行查询</button>
+        <button id="freshBtn" title="跳过缓存，重新计算并按数据集摘要校验后发布">强制重算</button>
+      </div>
+      <div class="actions">
+        <button class="small" id="detailToggle" style="flex:1">明细追溯：关</button>
+        <button class="small" id="traceBtn" style="flex:1">粒度校验矩阵</button>
+      </div>
+      <div class="small muted" style="margin-top:10px" id="runMeta"></div>
+    </div>
+
+    <div class="panel">
+      <h2>5 · 数据版本 / 缓存</h2>
+      <div class="loadbar">
+        <button data-load="base">重新载入基准</button>
+        <button data-load="corrections">增量更正</button>
+        <button id="upgradeBtn">结构升级</button>
+        <button id="resumeBtn" title="中断后从检查点恢复">中断恢复演示</button>
+      </div>
+      <div class="small muted" id="opsStats" style="margin-top:10px"></div>
+      <details class="trace" style="margin-top:8px">
+        <summary>载入运行与检查点</summary>
+        <div class="inner" id="runs"></div>
+      </details>
+      <details class="trace" style="margin-top:6px">
+        <summary>结果缓存历史（含旧展开结果）</summary>
+        <div class="inner" id="cacheHist"></div>
+      </details>
+      <div class="small muted" style="margin-top:8px">缓存按 (查询, 数据集摘要) 追加；发布前复核摘要，旧结果不会覆盖新粒度。</div>
+    </div>
+
+    <div class="panel">
+      <h2>6 · 订单</h2>
+      <div class="chips" id="orders"></div>
+      <div class="small muted" style="margin-top:8px">点击订单查看原始文档、桥表行、计划历史。</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel" id="resultPanel">
+      <h2>结果 <span class="tag" id="resultTag">尚未执行</span></h2>
+      <div id="resultBody">
+        <div class="empty">选择粒度与指标后执行。<br>同一份嵌套订单同时含商品、优惠、履约三条数组，直接三数组展开会按乘积放大金额。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="orderDialog">
+  <div class="dlg-head"><b id="orderTitle">订单</b><button class="small" data-close>关闭</button></div>
+  <div class="dlg-body" id="orderBody"></div>
+</dialog>
+
+<dialog id="traceDialog">
+  <div class="dlg-head"><b>可加性 / 重算规则矩阵</b><button class="small" data-close>关闭</button></div>
+  <div class="dlg-body" id="traceBody"></div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
